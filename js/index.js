@@ -9,12 +9,13 @@ function totalBalanceUpdate() {
     if (isNaN(foodExpenses) || isNaN(rentExpenses) || isNaN(clothesExpenses)) {
 
         alert('Please check your expenses input value and use only number.');
-        return 00;
+
+        return 0;
     }
     if (foodExpenses <= 0 || rentExpenses <= 0 || clothesExpenses <= 0) {
 
         alert('Please check your expenses input value and use only positive number.');
-        return 00;
+        return 0;
     }
 
 
