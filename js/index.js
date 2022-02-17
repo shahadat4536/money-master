@@ -80,7 +80,7 @@ document.getElementById('saving-button').addEventListener('click', function () {
     const remainingBalanceValue = remainingBalanceText.innerText;
 
     const remainingBalance = balanceCalculate - savingAmountText.innerText;
-    if (remainingBalance < 0) {
+    if (remainingBalance > 0 || isNaN(remainingBalance)) {
         savingAmountText.innerText = '00'
         remainingBalanceText.innerText = '00'
         return alert('Please input valid amount of money in number format 007');
