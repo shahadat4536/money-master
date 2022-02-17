@@ -6,9 +6,14 @@ function totalBalanceUpdate() {
     const clothesExpenses = document.getElementById('clothes-expenses').value;
 
 
-    if (isNaN(foodExpenses) || isNaN(rentExpenses) || isNaN(clothesExpenses) || foodExpenses < 0 || rentExpenses < 0 || clothesExpenses < 0) {
+    if (isNaN(foodExpenses) || isNaN(rentExpenses) || isNaN(clothesExpenses)) {
 
-        alert('Please check your input value and use only positive number.');
+        alert('Please check your expenses input value and use only number.');
+        return 0;
+    }
+    if (foodExpenses < 0 || rentExpenses < 0 || clothesExpenses < 0) {
+
+        alert('Please check your expenses input value and use only positive number.');
         return 0;
     }
 
@@ -33,7 +38,7 @@ function totalExpensesUpdate() {
     const balanceCalculate = parseFloat(incomeValue) - totalExpensesValue;
     balanceValue.innerText = balanceCalculate;
     if (incomeValue < totalExpensesValue) {
-
+        totalExpensesText.innerText = '00';
         balanceValue.innerText = incomeValue;
         return alert('Your expenses outweigh your income');
 
@@ -66,6 +71,10 @@ document.getElementById('saving-button').addEventListener('click', function () {
     const totalExpensesValue = totalExpensesUpdate();
 
     const savingInput = document.getElementById('saving-input').value;
+    if (savingInput < 0) {
+        alert('use positive number in saving input')
+        return;
+    }
 
     const savingAmountText = document.getElementById('saving-amount');
     const savingAmount = savingAmountText.innerText;
@@ -80,11 +89,16 @@ document.getElementById('saving-button').addEventListener('click', function () {
     const remainingBalanceValue = remainingBalanceText.innerText;
 
     const remainingBalance = balanceCalculate - savingAmountText.innerText;
-    if (remainingBalance > 0 || isNaN(remainingBalance)) {
+    if (remainingBalance < 0) {
         savingAmountText.innerText = '00'
         remainingBalanceText.innerText = '00'
-        return alert('Please input valid amount of money in number format 007');
+        return alert('Your saving input greater than your balance');
+    }
 
+    if (isNaN(remainingBalance)) {
+        savingAmountText.innerText = '00'
+        remainingBalanceText.innerText = '00'
+        return alert('Please check your input value and use only positive number.');
     }
     remainingBalanceText.innerText = remainingBalance;
 })
