@@ -11,11 +11,12 @@ function totalBalanceUpdate() {
         alert('Please check your expenses input value and use only number.');
         return 00;
     }
-    if (foodExpenses < 0 || rentExpenses < 0 || clothesExpenses < 0) {
+    if (foodExpenses <= 0 || rentExpenses <= 0 || clothesExpenses <= 0) {
 
         alert('Please check your expenses input value and use only positive number.');
         return 00;
     }
+
 
     const totalExpensesValueUpdate = parseFloat(foodExpenses) + parseFloat(rentExpenses) + parseFloat(clothesExpenses);
     return totalExpensesValueUpdate;
