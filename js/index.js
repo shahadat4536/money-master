@@ -1,4 +1,4 @@
-
+//  balance function
 function totalBalanceUpdate() {
 
     const foodExpenses = document.getElementById('food-expenses').value;
@@ -8,11 +8,9 @@ function totalBalanceUpdate() {
 
     if (isNaN(foodExpenses) || isNaN(rentExpenses) || isNaN(clothesExpenses) || foodExpenses < 0 || rentExpenses < 0 || clothesExpenses < 0) {
 
-        alert('Please Enter a Positive Number')
+        alert('Please check your input value and use only positive number.');
         return 0;
     }
-
-
 
     const totalExpensesValueUpdate = parseFloat(foodExpenses) + parseFloat(rentExpenses) + parseFloat(clothesExpenses);
     return totalExpensesValueUpdate;
@@ -21,11 +19,10 @@ function totalBalanceUpdate() {
 }
 
 
-
+//  expenses function
 function totalExpensesUpdate() {
 
-    const totalExpensesValue = totalBalanceUpdate()
-    // console.log(totalExpensesValue, llll)
+    const totalExpensesValue = totalBalanceUpdate();
     const totalExpensesText = document.getElementById('total-expenses');
     const totalExpenses = totalExpensesText.innerText;
     totalExpensesText.innerText = totalExpensesValue;
@@ -37,8 +34,8 @@ function totalExpensesUpdate() {
     balanceValue.innerText = balanceCalculate;
     if (incomeValue < totalExpensesValue) {
 
-        balanceValue.innerText = ''
-        return alert('Please input valid amount of money in number format');
+        balanceValue.innerText = incomeValue;
+        return alert('Your expenses outweigh your income');
 
     }
 
@@ -47,27 +44,26 @@ function totalExpensesUpdate() {
 
 }
 
-console.log(totalBalanceUpdate(), 5555)
 
 
+// saving function
 function savingCalculate(incomeValue, savingInput) {
     const savingResult = (incomeValue * savingInput) / 100;
-    return savingResult
+    return savingResult;
 };
 
+
+// handle calculate button
 document.getElementById('expenses-calculate').addEventListener('click', function () {
+    totalExpensesUpdate();
+});
 
-    totalExpensesUpdate()
-
-
-
-})
-
+// handle saving button
 document.getElementById('saving-button').addEventListener('click', function () {
 
     const incomeValue = document.getElementById('income').value;
 
-    const totalExpensesValue = totalExpensesUpdate()
+    const totalExpensesValue = totalExpensesUpdate();
 
     const savingInput = document.getElementById('saving-input').value;
 
@@ -85,17 +81,12 @@ document.getElementById('saving-button').addEventListener('click', function () {
 
     const remainingBalance = balanceCalculate - savingAmountText.innerText;
     if (remainingBalance < 0) {
-
-        remainingBalanceText.innerText = ''
+        savingAmountText.innerText = '00'
+        remainingBalanceText.innerText = '00'
         return alert('Please input valid amount of money in number format 007');
 
     }
     remainingBalanceText.innerText = remainingBalance;
-
-
-
-
-
 })
 
 
