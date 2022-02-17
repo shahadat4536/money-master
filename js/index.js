@@ -9,12 +9,12 @@ function totalBalanceUpdate() {
     if (isNaN(foodExpenses) || isNaN(rentExpenses) || isNaN(clothesExpenses)) {
 
         alert('Please check your expenses input value and use only number.');
-        return 0;
+        return 00;
     }
     if (foodExpenses < 0 || rentExpenses < 0 || clothesExpenses < 0) {
 
         alert('Please check your expenses input value and use only positive number.');
-        return 0;
+        return 00;
     }
 
     const totalExpensesValueUpdate = parseFloat(foodExpenses) + parseFloat(rentExpenses) + parseFloat(clothesExpenses);
@@ -22,7 +22,6 @@ function totalBalanceUpdate() {
 
 
 }
-
 
 //  expenses function
 function totalExpensesUpdate() {
@@ -48,15 +47,11 @@ function totalExpensesUpdate() {
     return totalExpenses;
 
 }
-
-
-
 // saving function
 function savingCalculate(incomeValue, savingInput) {
     const savingResult = (incomeValue * savingInput) / 100;
     return savingResult;
 };
-
 
 // handle calculate button
 document.getElementById('expenses-calculate').addEventListener('click', function () {
